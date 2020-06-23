@@ -1,36 +1,44 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { BooksListContext } from "../../context/BooksListContext";
-import { Route, Link, Redirect } from "react-router-dom";
-import Search from "../Search/Search.component";
+import { Link, withRouter } from "react-router-dom";
 
-const Home = () => {
-  const { doneFetchBooks, books, message, validateSearch } = useContext(
+const Home = ({ history }) => {
+  const { doneFetchBooks, books, message, validateSearch, setBooks, setdoneFetchBooks } = useContext(
     BooksListContext
   );
-  const [searchValue, setSearchValue] = useState("");
 
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-  };
+  useEffect(() => {
+    setdoneFetchBooks(false)
+  }, [setdoneFetchBooks])
 
   return (
     <Fragment>
-      {books.length === 0 ? (
-        <div>
-          <input
-            id="q_book"
-            type="text"
-            onChange={(e) => handleChange(e)}
-            onKeyPress={(e) => validateSearch(e)}
-          />
-          <button onClick={(e) => validateSearch(e)}>Search</button>
-        </div>
-      ) : null}
-      {doneFetchBooks ? (
-        <Redirect to='/search' />
-      ) : null}
+      <Link to='/search'>Advanced Search</Link>
+      <div>
+        <input
+          id="q_book"
+          type="text"
+          onKeyPress={(e) => {
+            validateSearch(e);
+            if (e.key !== "Enter") {
+              return
+            } else {
+              history.push("/search");
+            };
+
+          }}
+        />
+        <button
+          onClick={(e) => {
+            validateSearch(e);
+            history.push("/search");
+          }}
+        >
+          Search
+        </button>
+      </div>
     </Fragment>
   );
 };
 
-export default Home;
+export default withRouter(Home);

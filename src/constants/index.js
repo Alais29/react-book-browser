@@ -1,9 +1,9 @@
 //Base URL
-const base_url = "https://www.googleapis.com/books/v1/";
-export const api_key = "&key=AIzaSyBZdi-PBsLtDppYi1l8l1jnbPK6DYrh0-Q";
-
+const base_url = "https://www.googleapis.com/books/v1/volumes/";
+export const api_key = "AIzaSyBZdi-PBsLtDppYi1l8l1jnbPK6DYrh0-Q";
+// https://www.googleapis.com/books/v1/volumes/buc0AAAAMAAJ&key=AIzaSyBZdi-PBsLtDppYi1l8l1jnbPK6DYrh0-Q
 //search
-const query = "volumes?q=";
+const query = "?q=";
 
 //search parameters
 export const parameters = {
@@ -32,6 +32,6 @@ export const orders = {
 }
 
 //Route
-export const booksSearch = (parameter = parameters.title, filter = filters.all, order = orders.relevance, term) => `${ base_url }${ query }${ parameter }${ term }${ filter }${ order }`;
-
+export const booksSearch = (parameter = parameters.title, filter = filters.all, order = orders.relevance, term) => `${ base_url }${ query }${ parameter }${ term }${ filter }${ order }&key=${api_key}`;
+export const bookDetails = book_id => `${ base_url }${ book_id }?key=${ api_key }`;
 
