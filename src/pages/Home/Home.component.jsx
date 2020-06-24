@@ -1,8 +1,10 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { BooksListContext } from "../../context/BooksListContext";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Title from '../../components/Title/Title.component';
+import SearchBar from "../../components/SearchBar/SearchBar.component";
 
-const Home = ({ history }) => {
+const Home = () => {
   const { doneFetchBooks, books, message, validateSearch, setBooks, setdoneFetchBooks } = useContext(
     BooksListContext
   );
@@ -14,31 +16,10 @@ const Home = ({ history }) => {
   return (
     <Fragment>
       <Link to='/search'>Advanced Search</Link>
-      <div>
-        <input
-          id="q_book"
-          type="text"
-          onKeyPress={(e) => {
-            validateSearch(e);
-            if (e.key !== "Enter") {
-              return
-            } else {
-              history.push("/search");
-            };
-
-          }}
-        />
-        <button
-          onClick={(e) => {
-            validateSearch(e);
-            history.push("/search");
-          }}
-        >
-          Search
-        </button>
-      </div>
+      <Title text="Find your next favorite book!" />
+      <SearchBar validateSearch={validateSearch} />
     </Fragment>
   );
 };
 
-export default withRouter(Home);
+export default Home;

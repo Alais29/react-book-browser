@@ -10,7 +10,6 @@ const Details = () => {
       {details &&
         <div>
           <p>{details.volumeInfo.title}</p>
-          <div id="viewerCanvas" style={{width: "600px", height: "500px"}}></div>
         </div>
       }
     </div>

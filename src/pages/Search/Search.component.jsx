@@ -2,6 +2,8 @@ import React, { useContext, Fragment, useState } from "react";
 import { BooksListContext } from "../../context/BooksListContext";
 import { parameters, filters, orders } from "./../../constants/index";
 import { Link } from "react-router-dom";
+import SearchBar from "../../components/SearchBar/SearchBar.component";
+import Books from "../../components/Books/Books.component";
 
 const Search = () => {
   const { doneFetchBooks, books, message, validateSearch } = useContext(
@@ -19,7 +21,7 @@ const Search = () => {
   } = filters;
   const { relevance, newest } = orders;
 
-  //set a State for parameter options
+  //set a State for parameter, filter and order options
   const [parameter, setParameter] = useState("");
   const [filter, setFilter] = useState("");
   const [order, setOrder] = useState("");
@@ -38,14 +40,7 @@ const Search = () => {
   return (
     <Fragment>
       <Link to="/">Home</Link>
-      <input
-        type="text"
-        id="q_book"
-        onKeyPress={(e) => validateSearch(e, parameter, filter, order)}
-      />
-      <button onClick={(e) => validateSearch(e, parameter, filter, order)}>
-        Search
-      </button>
+      <SearchBar validateSearch={validateSearch} parameter={parameter} filter={filter} order={order} />
       <p>Search by</p>
       <div>
         <input
@@ -116,15 +111,7 @@ const Search = () => {
         <option value={newest}>Newest</option>
       </select>
 
-      {books.length !== 0 ? (
-        books.map((book) => (
-          <p>
-            {book.volumeInfo.title} <Link to={`/details/${book.id}`}>Details</Link>
-          </p>
-        ))
-      ) : (
-        <p>{message}</p>
-      )}
+      <Books books={books} message={message} />
     </Fragment>
   );
 };
