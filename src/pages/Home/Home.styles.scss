@@ -1,0 +1,14 @@
+.container-home {
+  display: flex!important;
+  align-items: center;
+
+  &__col-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
