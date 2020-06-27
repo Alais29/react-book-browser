@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Container, Grid } from "@material-ui/core";
 import Title from '../../components/Title/Title.component';
 import SearchBar from "../../components/SearchBar/SearchBar.component";
-import GirlReading from '../../assets/reading2.svg';
+import GirlReading from '../../assets/Bibliophile.gif';
 
 import './Home.styles.scss';
 
@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <Container className="container-home">
-      <Grid container spacing={3}>
+      <Grid container spacing={4}>
         <Grid item xs={12} md={6} className="container-home__col-left">
           <Title text="Find your next favorite book!" />
           <SearchBar validateSearch={validateSearch} home />

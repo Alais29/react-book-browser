@@ -32,6 +32,6 @@ export const orders = {
 }
 
 //Route
-export const booksSearch = (parameter = parameters.title, filter = filters.all, order = orders.relevance, term) => `${ base_url }${ query }${ parameter }${ term }${ filter }${ order }&maxResults=40&key=${api_key}`;
+export const booksSearch = (parameter = parameters.title, filter = filters.all, order = orders.relevance, term) => `${ base_url }${ query }${ parameter }${ term }${ filter }${ order }&maxResults=36&key=${api_key}`;
 export const bookDetails = book_id => `${ base_url }${ book_id }?key=${ api_key }`;
 

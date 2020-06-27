@@ -7,7 +7,7 @@ const Title = ({ text, align }) => (
     component="h2"
     variant="h3"
     align={!align ? 'left' : align}
-    gutterBottom
+    className="title-component"
   >
     {text}
   </Typography>

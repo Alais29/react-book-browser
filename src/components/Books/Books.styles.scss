@@ -1,0 +1,10 @@
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .book__paper {
+    flex-basis: 190px;
+    margin: 0.5rem;
+  }
+}

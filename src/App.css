@@ -2,6 +2,9 @@ body {
   background-color: #eae7e0;
 }
 
-.MuiContainer-root {
-  min-height: 86.3vh;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

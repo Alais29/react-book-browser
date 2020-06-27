@@ -1,0 +1,30 @@
+.book {
+  &__top {
+    padding: 0.4rem 0.5rem 0;
+  }
+  &__link {
+    text-decoration: none;
+  }
+  &__paper {
+    position: relative;
+    height: 300px;
+    overflow-y: hidden;
+    &:hover div:nth-child(2) {
+      top: 0;
+    }
+  }
+  &__img-container {
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  &__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+

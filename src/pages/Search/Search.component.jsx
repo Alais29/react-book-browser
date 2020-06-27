@@ -27,7 +27,7 @@ const Search = () => {
         text="Go on, Try it!"
         align="center"
       />
-      <Paper elevation={3} className="advanced-search__paper">
+      <Paper elevation={3} className="advanced-search__paper" style={{marginBottom: '1rem'}}>
         <SearchBar
           search
           validateSearch={validateSearch}

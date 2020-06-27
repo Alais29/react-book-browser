@@ -8,9 +8,11 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
+    marginTop: '1rem'
   },
   title: {
     justifyContent: 'center',
+    textAlign: 'center'
   }
 }));
 
