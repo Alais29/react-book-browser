@@ -18,8 +18,15 @@ function App() {
         main: '#9b6549',
       },
       secondary: {
-        main: '#f3b366',
+        main: '#3786AD',
       },
+      tertiary: {
+        main: '#16487D',
+        contrastText: "#ffffff"
+      }
+    },
+    typography: {
+      fontFamily: "Neuton"
     },
   });
   

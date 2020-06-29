@@ -14,18 +14,19 @@ const SearchParams = ({
 }) => {
   return (
     <Grid container spacing={2}>
-      <Grid item xs="12" sm="4">
+      <Grid item xs={12} sm={4}>
         <Searhparam
           param={parameter}
           items={parameters}
           setfunction={setParameter}
+          label="Search by"
         />
       </Grid>
-      <Grid item xs="12" sm="4">
-        <Searhparam param={filter} items={filters} setfunction={setFilter} />
+      <Grid item xs={12} sm={4}>
+        <Searhparam param={filter} items={filters} setfunction={setFilter} label="Filter" />
       </Grid>
-      <Grid item xs="12" sm="4">
-        <Searhparam param={order} items={orders} setfunction={setOrder} />
+      <Grid item xs={12} sm={4}>
+        <Searhparam param={order} items={orders} setfunction={setOrder} label="Order by" />
       </Grid>
     </Grid>
   );

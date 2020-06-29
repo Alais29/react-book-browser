@@ -8,11 +8,9 @@ const Books = ({ books, message }) => {
   return (
     <Grid container spacing={2}>
       <div className="books-container">
-        {books.length !== 0 ? (
-          books.map((book) => <Book book={book} />)
-        ) : (
-          <Message message={message} />
-        )}
+        {books.map((book) => (
+          <Book book={book} key={book.id} />
+        ))}
       </div>
     </Grid>
   );

@@ -6,6 +6,7 @@ import Books from "../../components/Books/Books.component";
 
 import "./Search.styles.scss";
 import Title from "../../components/Title/Title.component";
+import Message from "../../components/Message/Message.component";
 
 const Search = () => {
   const { doneFetchBooks, books, message, validateSearch } = useContext(
@@ -23,11 +24,12 @@ const Search = () => {
         text="Search by different parameters, filters and/or order!"
         align="center"
       />
-      <Title
-        text="Go on, Try it!"
-        align="center"
-      />
-      <Paper elevation={3} className="advanced-search__paper" style={{marginBottom: '1rem'}}>
+      <Title text="Go on, Try it!" align="center" />
+      <Paper
+        elevation={3}
+        className="advanced-search__paper"
+        style={{ marginBottom: "1rem" }}
+      >
         <SearchBar
           search
           validateSearch={validateSearch}
@@ -39,7 +41,12 @@ const Search = () => {
           setOrder={setOrder}
         />
       </Paper>
-      <Books books={books} message={message} />
+      {doneFetchBooks && books.length !== 0 ? (
+        <Books books={books} message={message} />
+      ) : doneFetchBooks && books.length === 0 ? (
+        <Message text="Sorry! There are no results, try searching with a different term and/or parameter" />
+      ) : null
+      }
     </Container>
   );
 };

@@ -1,7 +1,8 @@
 //Base URL
 const base_url = "https://www.googleapis.com/books/v1/volumes/";
+// TODO HIDE API KEY
 export const api_key = "AIzaSyBZdi-PBsLtDppYi1l8l1jnbPK6DYrh0-Q";
-// https://www.googleapis.com/books/v1/volumes/buc0AAAAMAAJ&key=AIzaSyBZdi-PBsLtDppYi1l8l1jnbPK6DYrh0-Q
+
 //search
 const query = "?q=";
 
