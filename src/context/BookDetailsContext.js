@@ -6,7 +6,7 @@ export const BookDetailsContext = createContext();
 const BookDetailsContextProvider = ({children}) => {
   const book_id = window.location.pathname.split('/')[2];
   const [doneFetchBookDetails, setDoneFetchBookDetails] = useState(false);
-  const [details, setDetails] = useState();
+  const [details, setDetails] = useState('');
 
   //useEffect
   useEffect(() => getBookDetails(book_id), [book_id])

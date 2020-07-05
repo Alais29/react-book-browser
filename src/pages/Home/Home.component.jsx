@@ -11,7 +11,7 @@ const Home = () => {
   const { doneFetchBooks, books, message, validateSearch, setBooks, setdoneFetchBooks } = useContext(
     BooksListContext
   );
-
+  // TODO when going back to homepage, clear books searched
   return (
     <Container className="container-home">
       <Grid container spacing={4}>

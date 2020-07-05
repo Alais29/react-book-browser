@@ -21,7 +21,7 @@ const Search = () => {
   return (
     <Container className="container-search">
       <Title
-        text="Search by different parameters, filters and/or order!"
+        text="Search by different parameters, filters and/or order"
         align="center"
       />
       <Title text="Go on, Try it!" align="center" />
@@ -41,12 +41,12 @@ const Search = () => {
           setOrder={setOrder}
         />
       </Paper>
+      {/* TODO TRY ADDING SOME KIND OF LOADING ANIMATION WHEN SEARCHING */}
       {doneFetchBooks && books.length !== 0 ? (
         <Books books={books} message={message} />
-      ) : doneFetchBooks && books.length === 0 ? (
-        <Message text="Sorry! There are no results, try searching with a different term and/or parameter" />
-      ) : null
-      }
+      ) : (
+        <Message text={message} />
+      )}
     </Container>
   );
 };

@@ -20,7 +20,7 @@ const BooksListContextProvider = ({ children }) => {
           setMessage(data.error);
         } else if (data.totalItems === 0) {
           setMessage(
-            "No results, try with a different term, parameter or filter"
+            "Sorry! There are no results, try searching with a different term and/or parameter"
           );
           setBooks([]);
         } else if (data.totalItems === undefined) {

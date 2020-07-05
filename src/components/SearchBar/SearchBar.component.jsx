@@ -17,6 +17,7 @@ const SearchBar = ({
   setOrder,
 }) => {
   return (
+    // TODO clear search bar after search and add clear button to clear searched books
     <form autoComplete="off">
       <TextField
         label="Search for a book"
@@ -68,17 +69,6 @@ const SearchBar = ({
       >
         Search
       </Button>
-      {/* {home && (
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => {
-            history.push("/search");
-          }}
-        >
-          Advanced Search
-        </Button>
-      )} */}
     </form>
   );
 };
