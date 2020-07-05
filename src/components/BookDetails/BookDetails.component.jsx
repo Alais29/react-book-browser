@@ -88,14 +88,14 @@ const Bookdetails = ({ details }) => {
             info={accessInfo}
             link="webReaderLink"
             label="Read Sample"
-            color="secondary"
+            color="success"
           />
         ) : accessInfo.viewability === "ALL_PAGES" ? (
           <BookDetailsBtn
             info={accessInfo}
             link="webReaderLink"
             label="Read Book"
-            color="secondary"
+            color="success"
           />
         ) : null}
 
@@ -105,7 +105,7 @@ const Bookdetails = ({ details }) => {
               info={accessInfo.epub}
               link="downloadLink"
               label="Download Ebook"
-              color="secondary"
+              color="tertiary"
             />
           )}
         {accessInfo.viewability === "ALL_PAGES" &&
@@ -114,7 +114,7 @@ const Bookdetails = ({ details }) => {
               info={accessInfo.pdf}
               link="downloadLink"
               label="Download PDF"
-              color="secondary"
+              color="tertiary"
             />
           )}
       </Grid>

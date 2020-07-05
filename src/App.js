@@ -22,7 +22,8 @@ function App() {
       },
       tertiary: {
         main: '#16487D',
-        contrastText: "#ffffff"
+        contrastText: "#ffffff",
+        dark: '#0f3257'
       }
     },
     typography: {
