@@ -1,12 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Suspense } from "react";
 import { BooksListContext } from "../../context/BooksListContext";
-import { Container, Paper } from "@material-ui/core";
+import { Container, Paper, CircularProgress } from "@material-ui/core";
 import SearchBar from "../../components/SearchBar/SearchBar.component";
-import Books from "../../components/Books/Books.component";
-
-import "./Search.styles.scss";
 import Title from "../../components/Title/Title.component";
 import Message from "../../components/Message/Message.component";
+
+import "./Search.styles.scss";
+
+const Books = React.lazy(() =>
+  import("../../components/Books/Books.component")
+);
 
 const Search = () => {
   const { doneFetchBooks, books, message, validateSearch } = useContext(
@@ -41,12 +44,20 @@ const Search = () => {
           setOrder={setOrder}
         />
       </Paper>
-      {/* TODO TRY ADDING SOME KIND OF LOADING ANIMATION WHEN SEARCHING */}
-      {doneFetchBooks && books.length !== 0 ? (
-        <Books books={books} message={message} />
-      ) : (
-        <Message text={message} />
-      )}
+      {/* TODO TRY TO SHOW LOADING ANIMATION WHEN DOING A NEW SEARCH */}
+      <Suspense
+        fallback={
+          <div className="search-loading-container">
+            <CircularProgress size="3rem" color="secondary" />
+          </div>
+        }
+      >
+        {doneFetchBooks && books.length !== 0 ? (
+          <Books books={books} message={message} />
+        ) : (
+          <Message text={message} />
+        )}
+      </Suspense>
     </Container>
   );
 };

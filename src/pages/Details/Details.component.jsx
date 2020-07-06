@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { BookDetailsContext } from "../../context/BookDetailsContext";
-import Title from "../../components/Title/Title.component";
 import Bookdetails from "../../components/BookDetails/BookDetails.component";
 import { Container } from "@material-ui/core";
 

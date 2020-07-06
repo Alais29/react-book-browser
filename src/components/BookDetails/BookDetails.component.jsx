@@ -1,11 +1,13 @@
 import React from "react";
 import parse from "html-react-parser";
-import { Grid, Typography, Button } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import Title from "../Title/Title.component";
 import BookDetailsBtn from "./../BookDetailsBtns/BookDetailsBtn.component";
 import noImg from "../../assets/no-image.png";
 
 import "./BookDetails.styles.scss";
+
+// TODO add lazy loading to background and image
 
 const Bookdetails = ({ details }) => {
   const { saleInfo, accessInfo, volumeInfo } = details;

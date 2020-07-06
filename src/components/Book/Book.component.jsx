@@ -1,9 +1,11 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { Link } from "react-router-dom";
-import { Paper, makeStyles, Typography, Button } from "@material-ui/core";
+import { Paper, makeStyles, Typography, Button, CircularProgress } from "@material-ui/core";
 import noImg from "../../assets/no-image.png";
-import "./Book.styles.scss";
 import BookChip from "../BookChip/BookChip.component";
+import "./Book.styles.scss";
+
+const Image = React.lazy( ()=> import('../Image/Image.component') )
 
 const useStyles = makeStyles((theme) => ({
   bookTitle: {
@@ -44,11 +46,9 @@ const Book = ({ book }) => {
   return (
     <Paper className="book__paper">
       <div className="book__img-container">
-        <img
-          className="book__bg-img"
-          src={imgURL}
-          alt={book.volumeInfo.title}
-        />
+        <Suspense fallback={<div className="book-loading-container"><CircularProgress /></div>}>
+          <Image src={imgURL} alt={book.volumeInfo.title} classnames="book__bg-img" />
+        </Suspense>
       </div>
       <div className={classes.bookContent}>
         <div className="book__top">

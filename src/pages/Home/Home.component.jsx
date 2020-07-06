@@ -1,11 +1,13 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { useContext, Suspense } from "react";
 import { BooksListContext } from "../../context/BooksListContext";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, CircularProgress } from "@material-ui/core";
 import Title from '../../components/Title/Title.component';
 import SearchBar from "../../components/SearchBar/SearchBar.component";
 import GirlReading from '../../assets/Bibliophile.svg';
 
 import './Home.styles.scss';
+
+const Image = React.lazy( ()=> import('../../components/Image/Image.component') )
 
 const Home = () => {
   const { doneFetchBooks, books, message, validateSearch, setBooks, setdoneFetchBooks } = useContext(
@@ -21,7 +23,9 @@ const Home = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <div className="home-img-container">
-            <img src={GirlReading} alt="Reading"/>
+            <Suspense fallback={<CircularProgress color="secondary" />}>
+              <Image src={GirlReading} alt="Reading" />
+            </Suspense>
           </div>
         </Grid>
       </Grid>
