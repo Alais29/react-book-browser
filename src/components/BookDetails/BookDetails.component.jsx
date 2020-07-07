@@ -1,13 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import parse from "html-react-parser";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, CircularProgress } from "@material-ui/core";
 import Title from "../Title/Title.component";
 import BookDetailsBtn from "./../BookDetailsBtns/BookDetailsBtn.component";
+import NoInfo from "./../NoInfo/NoInfo.components";
 import noImg from "../../assets/no-image.png";
 
 import "./BookDetails.styles.scss";
 
-// TODO add lazy loading to background and image
+const Image = React.lazy( ()=> import('../../components/Image/Image.component') );
 
 const Bookdetails = ({ details }) => {
   const { saleInfo, accessInfo, volumeInfo } = details;
@@ -24,7 +25,9 @@ const Bookdetails = ({ details }) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={5} className="book-details__left">
-        <img src={imgURL} alt={title} />
+        <Suspense fallback={<CircularProgress color="secondary" />}>
+          <Image src={imgURL} alt={title} />
+        </Suspense>
         {imgURL !== noImg && (
           <div
             class="book-details__left-bg"
@@ -37,13 +40,13 @@ const Bookdetails = ({ details }) => {
           ></div>
         )}
       </Grid>
-      <Grid item md={7}>
+      <Grid item xs={12} md={7} className="book-details__right" >
         <Title text={title} />
         <p className="book-details__right-info">
-          <span>Release Date:</span> {publishedDate ? publishedDate : "N/A"}
+          <span>Release Date:</span> {publishedDate ? publishedDate : <NoInfo /> }
         </p>
         <p className="book-details__right-info">
-          <span>Categories:</span> {categories ? categories : "N/A"}
+          <span>Categories:</span> {categories ? categories : <NoInfo />}
         </p>
         <Grid container spacing={2}>
           <Grid item xs={6}>
@@ -67,14 +70,14 @@ const Bookdetails = ({ details }) => {
               <Typography variant="h4" component="h2">
                 Publisher:
               </Typography>
-              <span>{publisher ? publisher : "N/A"}</span>
+              <span>{publisher ? publisher : <NoInfo />}</span>
             </div>
           </Grid>
         </Grid>
         <Typography variant="h4" component="h2">
           Description:
         </Typography>
-        <p>{description ? parse(description) : "N/A"}</p>
+        <p>{description ? parse(description) : <NoInfo />}</p>
 
         {saleInfo.saleability === "FOR_SALE" && (
           <BookDetailsBtn

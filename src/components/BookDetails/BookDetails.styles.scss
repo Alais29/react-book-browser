@@ -25,9 +25,14 @@
       display: block;
     }
   }
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   &__right-info {
     margin: 0;
-    span {
+    span:nth-child(1) {
       font-weight: bold;
     }
   }
