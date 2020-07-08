@@ -21,7 +21,6 @@ const Bookdetails = ({ details }) => {
     categories,
   } = volumeInfo;
   let imgURL = volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : noImg;
-  // TODO make N/A text into a component, or even make each details section into a component
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={5} className="book-details__left">
@@ -78,50 +77,51 @@ const Bookdetails = ({ details }) => {
           Description:
         </Typography>
         <p>{description ? parse(description) : <NoInfo />}</p>
-
-        {saleInfo.saleability === "FOR_SALE" && (
-          <BookDetailsBtn
-            info={saleInfo}
-            link="buyLink"
-            label="Buy here"
-            color="secondary"
-          />
-        )}
-
-        {accessInfo.viewability === "PARTIAL" ? (
-          <BookDetailsBtn
-            info={accessInfo}
-            link="webReaderLink"
-            label="Read Sample"
-            color="success"
-          />
-        ) : accessInfo.viewability === "ALL_PAGES" ? (
-          <BookDetailsBtn
-            info={accessInfo}
-            link="webReaderLink"
-            label="Read Book"
-            color="success"
-          />
-        ) : null}
-
-        {accessInfo.viewability === "ALL_PAGES" &&
-          accessInfo.epub.isAvailable && (
+        <div>
+          {saleInfo.saleability === "FOR_SALE" && (
             <BookDetailsBtn
-              info={accessInfo.epub}
-              link="downloadLink"
-              label="Download Ebook"
-              color="tertiary"
+              info={saleInfo}
+              link="buyLink"
+              label="Buy here"
+              color="secondary"
             />
           )}
-        {accessInfo.viewability === "ALL_PAGES" &&
-          accessInfo.pdf.isAvailable && (
+
+          {accessInfo.viewability === "PARTIAL" ? (
             <BookDetailsBtn
-              info={accessInfo.pdf}
-              link="downloadLink"
-              label="Download PDF"
-              color="tertiary"
+              info={accessInfo}
+              link="webReaderLink"
+              label="Read Sample"
+              color="success"
             />
-          )}
+          ) : accessInfo.viewability === "ALL_PAGES" ? (
+            <BookDetailsBtn
+              info={accessInfo}
+              link="webReaderLink"
+              label="Read Book"
+              color="success"
+            />
+          ) : null}
+
+          {accessInfo.viewability === "ALL_PAGES" &&
+            accessInfo.epub.isAvailable && (
+              <BookDetailsBtn
+                info={accessInfo.epub}
+                link="downloadLink"
+                label="Download Ebook"
+                color="tertiary"
+              />
+            )}
+          {accessInfo.viewability === "ALL_PAGES" &&
+            accessInfo.pdf.isAvailable && (
+              <BookDetailsBtn
+                info={accessInfo.pdf}
+                link="downloadLink"
+                label="Download PDF"
+                color="tertiary"
+              />
+            )}
+        </div>
       </Grid>
     </Grid>
   );

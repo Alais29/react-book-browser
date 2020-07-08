@@ -1,4 +1,4 @@
-import React, { useContext, useState, Suspense } from "react";
+import React, { useContext, useState, Suspense, useEffect } from "react";
 import { BooksListContext } from "../../context/BooksListContext";
 import { Container, Paper, CircularProgress } from "@material-ui/core";
 import SearchBar from "../../components/SearchBar/SearchBar.component";
@@ -12,7 +12,7 @@ const Books = React.lazy(() =>
 );
 
 const Search = () => {
-  const { doneFetchBooks, books, message, validateSearch } = useContext(
+  const { doneFetchBooks, books, message, validateSearch, errorQuery, setErrorQuery } = useContext(
     BooksListContext
   );
 
@@ -20,6 +20,10 @@ const Search = () => {
   const [parameter, setParameter] = useState("");
   const [filter, setFilter] = useState("");
   const [order, setOrder] = useState("");
+
+  useEffect(() => {
+    setErrorQuery(false)
+  }, [setErrorQuery])
 
   return (
     <Container className="container-search">
@@ -52,11 +56,10 @@ const Search = () => {
           </div>
         }
       >
-        {doneFetchBooks && books.length !== 0 ? (
+        {doneFetchBooks && books.length !== 0 && 
           <Books books={books} message={message} />
-        ) : (
-          <Message text={message} />
-        )}
+        }
+        {errorQuery && <Message text={message} />}
       </Suspense>
     </Container>
   );
