@@ -12,9 +12,13 @@ const Books = React.lazy(() =>
 );
 
 const Search = () => {
-  const { doneFetchBooks, books, message, validateSearch, errorQuery, setErrorQuery } = useContext(
-    BooksListContext
-  );
+  const {
+    doneFetchBooks,
+    books,
+    message,
+    validateSearch,
+    setMessage,
+  } = useContext(BooksListContext);
 
   //set a State for parameter, filter and order options
   const [parameter, setParameter] = useState("");
@@ -22,8 +26,8 @@ const Search = () => {
   const [order, setOrder] = useState("");
 
   useEffect(() => {
-    setErrorQuery(false)
-  }, [setErrorQuery])
+    setMessage("");
+  }, []);
 
   return (
     <Container className="container-search">
@@ -56,10 +60,10 @@ const Search = () => {
           </div>
         }
       >
-        {doneFetchBooks && books.length !== 0 && 
+        {doneFetchBooks && books.length !== 0 && (
           <Books books={books} message={message} />
-        }
-        {errorQuery && <Message text={message} />}
+        )}
+        <Message text={message} />
       </Suspense>
     </Container>
   );

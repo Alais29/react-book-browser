@@ -10,6 +10,7 @@ const SearchBar = ({
   parameter,
   filter,
   order,
+  errorQuery,
   history,
   home,
   search,
@@ -35,7 +36,6 @@ const SearchBar = ({
   }
 
   return (
-    // TODO clear search bar after search and add clear button to clear searched books
     <form autoComplete="off">
       <TextField
         label="Search for a book"
@@ -46,7 +46,6 @@ const SearchBar = ({
         margin="normal"
         value={searchValue}
       />
-      {/* TODO - Show error message when no query is made (still doesn't work when clicking the search button) */}
       {search ? (
         <SearchParams
           parameter={parameter}
@@ -75,7 +74,9 @@ const SearchBar = ({
         color="primary"
         onClick={(e) => {
           validateSearch(e, parameter, filter, order);
-          history.push("/search");
+          if(!errorQuery) {
+            history.push("/search");
+          }
         }}
       >
         Search
