@@ -9,7 +9,6 @@ const Searhparam = ({ param, items, setfunction, label }) => {
   return (
     <FormControl fullWidth margin="dense">
       <InputLabel>{label}</InputLabel>
-      {/* TODO - WHEN ALL FILTER IS CHOSEN IT DOESN'T SHOW IN THE SELECT */}
       <Select value={param} onChange={(e) => handleParameterChange(e)}>
         {Object.entries(items).map((item) => (
           <MenuItem value={item[1]} key={item[0]}>

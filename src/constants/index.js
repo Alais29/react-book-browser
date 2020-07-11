@@ -17,7 +17,7 @@ export const parameters = {
 
 //filters
 export const filters = {
-  all: '',
+  all: ' ',
   download : "&download=epub",
   partial_preview : "&filter=partial",
   full_preview : "&filter=full",
