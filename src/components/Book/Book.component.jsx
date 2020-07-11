@@ -1,11 +1,17 @@
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
-import { Paper, makeStyles, Typography, Button, CircularProgress } from "@material-ui/core";
+import {
+  Paper,
+  makeStyles,
+  Typography,
+  Button,
+  CircularProgress,
+} from "@material-ui/core";
 import noImg from "../../assets/no-image.png";
 import BookChip from "../BookChip/BookChip.component";
 import "./Book.styles.scss";
 
-const Image = React.lazy( ()=> import('../Image/Image.component') )
+const Image = React.lazy(() => import("../Image/Image.component"));
 
 const useStyles = makeStyles((theme) => ({
   bookTitle: {
@@ -46,8 +52,18 @@ const Book = ({ book }) => {
   return (
     <Paper className="book__paper">
       <div className="book__img-container">
-        <Suspense fallback={<div className="book-loading-container"><CircularProgress /></div>}>
-          <Image src={imgURL} alt={book.volumeInfo.title} classnames="book__bg-img" />
+        <Suspense
+          fallback={
+            <div className="book-loading-container">
+              <CircularProgress />
+            </div>
+          }
+        >
+          <Image
+            src={imgURL}
+            alt={book.volumeInfo.title}
+            classnames="book__bg-img"
+          />
         </Suspense>
       </div>
       <div className={classes.bookContent}>
@@ -63,11 +79,13 @@ const Book = ({ book }) => {
             {publishedYear}
           </Typography>
 
-          {volumeInfo.categories
-            ? volumeInfo.categories.map((category) => (
-                <BookChip label={category} color="chipCategory" />
-              ))
-            : null}
+          {volumeInfo.categories && (
+            <BookChip
+              label={volumeInfo.categories}
+              color="chipCategory"
+              key={volumeInfo.categories}
+            />
+          )}
 
           {saleability === "FREE" ? (
             <BookChip label="Free" color="chipSuccess" />

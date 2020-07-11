@@ -17,6 +17,7 @@ const Home = () => {
     doneFetchBooks,
     books,
     errorQuery,
+    setErrorQuery,
     message,
     validateSearch,
     setBooks,
@@ -25,12 +26,10 @@ const Home = () => {
   } = useContext(BooksListContext);
 
   useEffect(() => {
-    setBooks("");
-  }, [books, setBooks]);
-
-  useEffect(() => {
+    setBooks([]);
     setMessage("");
-  }, []);
+    setErrorQuery(true)
+  }, [setBooks]);
 
   return (
     <Container className="container-home">

@@ -52,7 +52,6 @@ const Search = () => {
           setOrder={setOrder}
         />
       </Paper>
-      {/* TODO TRY TO SHOW LOADING ANIMATION WHEN DOING A NEW SEARCH */}
       <Suspense
         fallback={
           <div className="search-loading-container">

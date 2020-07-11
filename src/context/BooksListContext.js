@@ -44,11 +44,14 @@ const BooksListContextProvider = ({ children }) => {
   ) => {
     if (e.type === "keypress" && e.key !== "Enter") return;
     if (q_book === "") {
+      setdoneFetchBooks(false);
+      setBooks([]);
       setErrorQuery(true);
-      setMessage("Try searching for something first :)")
+      setMessage("Try searching for something first :)");
     } else {
       setErrorQuery(false);
       getBooks(parameter, filter, order, q_book);
+      setdoneFetchBooks(false);
     }
   };
 

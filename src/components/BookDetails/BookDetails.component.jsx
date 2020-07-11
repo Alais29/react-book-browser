@@ -76,7 +76,9 @@ const Bookdetails = ({ details }) => {
         <Typography variant="h4" component="h2">
           Description:
         </Typography>
-        <p>{description ? parse(description) : <NoInfo />}</p>
+        <div className="book-details__description">
+          {description ? parse(description) : <NoInfo />}
+        </div>
         <div>
           {saleInfo.saleability === "FOR_SALE" && (
             <BookDetailsBtn
