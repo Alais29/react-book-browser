@@ -3,20 +3,16 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import BooksListContextProvider from "./context/BooksListContext";
 import BookDetailsContextProvider from "./context/BookDetailsContext";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
+import ScrollToTop from "./components/ScrollToTop.component";
 
-// const Header = React.lazy( ()=> import('./components/Header/Header.component') )
-// const Footer = React.lazy( ()=> import('./components/Footer/Footer.component') )
 const Search = React.lazy(() => import("./pages/Search/Search.component"));
 const Home = React.lazy(() => import("./pages/Home/Home.component"));
 const Details = React.lazy(() => import("./pages/Details/Details.component"));
-
-// TODO add animation when changing pages
-// TODO check all components for variables not used and delete theme
 
 function App() {
   const theme = createMuiTheme({
@@ -51,13 +47,16 @@ function App() {
         <Switch>
           <BooksListContextProvider>
             <Route exact path="/">
+              <ScrollToTop />
               <Home />
             </Route>
             <Route path="/search">
+              <ScrollToTop />
               <Search />
             </Route>
             <Route path="/details/:book_id">
               <BookDetailsContextProvider>
+                <ScrollToTop />
                 <Details />
               </BookDetailsContextProvider>
             </Route>

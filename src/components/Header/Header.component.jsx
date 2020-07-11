@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Typography from '@material-ui/core/Typography';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
 import './Header.styles.scss';
 
 const useStyles = makeStyles((theme) => ({

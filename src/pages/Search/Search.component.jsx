@@ -27,7 +27,7 @@ const Search = () => {
 
   useEffect(() => {
     setMessage("");
-  }, []);
+  }, [setMessage]);
 
   return (
     <Container className="container-search">
@@ -35,7 +35,6 @@ const Search = () => {
         text="Search by different parameters, filters and/or order"
         align="center"
       />
-      <Title text="Go on, Try it!" align="center" />
       <Paper
         elevation={3}
         className="advanced-search__paper"

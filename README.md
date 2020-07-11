@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+A book searcher app made with Google Books API and API context.
+
+## What you can do with the app:
+
+- Search by title for any book available on the API
+- Do an advanced search by different parameters (title, author, category, publisher and isbn), filters (partial preview, full preview, free, paid and ebooks) and order the results by relevance or newest
+- On the results you can check the book release year, main category, its saleability (for sale, not for sale, free), if it's an ebook, and if it has a partial or full preview available
+- When checking each book details you'll see the full release date, all categories, authors, publisher, description and, depending on the features available for each book, you'll see buttons to buy it, read a sample, read the full book, or download it on epub or pdf format.
+
 ## Available Scripts
 
 In the project directory, you can run:

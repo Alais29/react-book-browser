@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import { TextField, Button } from "@material-ui/core";
 import SearchParams from "../SearchParams/SearchParams.component";
-import { useState } from "react";
 
 const SearchBar = ({
   validateSearch,
@@ -18,12 +16,11 @@ const SearchBar = ({
   setFilter,
   setOrder,
 }) => {
-  
-  const [searchValue, setSearchValue] = useState("")
+  const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (e) => {
     setSearchValue(e.target.value);
-  }
+  };
   const handleKeyPress = (e) => {
     validateSearch(e, parameter, filter, order);
     if (e.key !== "Enter") {
@@ -33,7 +30,7 @@ const SearchBar = ({
     } else {
       e.preventDefault();
     }
-  }
+  };
 
   return (
     <form autoComplete="off">
@@ -74,7 +71,7 @@ const SearchBar = ({
         color="primary"
         onClick={(e) => {
           validateSearch(e, parameter, filter, order);
-          if(!errorQuery) {
+          if (!errorQuery) {
             history.push("/search");
           }
         }}

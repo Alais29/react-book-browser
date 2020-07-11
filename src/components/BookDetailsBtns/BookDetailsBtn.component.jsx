@@ -3,10 +3,12 @@ import { Button } from "@material-ui/core";
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
+  margin: {
+    marginRight: '0.5rem'
+  },
   secondary: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText,
-    marginRight: '0.5rem',
     '&:hover': {
       backgroundColor: theme.palette.secondary.dark,
     }
@@ -14,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   tertiary: {
     backgroundColor: theme.palette.tertiary.main,
     color: theme.palette.tertiary.contrastText,
-    marginRight: '0.5rem',
     '&:hover': {
       backgroundColor: theme.palette.tertiary.dark,
     }
@@ -22,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   success: {
     backgroundColor: theme.palette.success.main,
     color: "#ffffff",
-    marginRight: '0.5rem',
     '&:hover': {
       backgroundColor: theme.palette.success.dark,
     }
@@ -38,9 +38,9 @@ const BookDetailsBtn = ({info, link, label, color}) => {
         href={info[link]}
         target="_blank"
         rel="noopener noreferrer"
-        class="book-details__btn-link"
+        className="book-details__btn-link"
       >
-        <Button variant="contained" className={classes[color]}>
+        <Button variant="contained" className={`${classes[color]} ${classes.margin}`}>
           {label}
         </Button>
       </a>

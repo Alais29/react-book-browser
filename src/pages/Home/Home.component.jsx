@@ -14,14 +14,11 @@ const Image = React.lazy(() =>
 
 const Home = () => {
   const {
-    doneFetchBooks,
-    books,
     errorQuery,
     setErrorQuery,
     message,
     validateSearch,
     setBooks,
-    setdoneFetchBooks,
     setMessage,
   } = useContext(BooksListContext);
 
@@ -29,7 +26,7 @@ const Home = () => {
     setBooks([]);
     setMessage("");
     setErrorQuery(true)
-  }, [setBooks]);
+  }, [setBooks, setMessage, setErrorQuery]);
 
   return (
     <Container className="container-home">

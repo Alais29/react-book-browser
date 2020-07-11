@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { Container, CircularProgress } from "@material-ui/core";
 import { BookDetailsContext } from "../../context/BookDetailsContext";
 import Bookdetails from "../../components/BookDetails/BookDetails.component";
-import { Container } from "@material-ui/core";
 
 import './Details.styles.scss'
 
@@ -14,7 +13,7 @@ const Details = () => {
       {doneFetchBookDetails && details ? (
         <Bookdetails details={details} />
       ) : (
-        <div class="d-flex-center">
+        <div className="d-flex-center">
           <CircularProgress color="secondary" size="5rem" />
         </div>
       )}

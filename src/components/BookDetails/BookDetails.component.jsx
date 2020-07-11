@@ -29,7 +29,7 @@ const Bookdetails = ({ details }) => {
         </Suspense>
         {imgURL !== noImg && (
           <div
-            class="book-details__left-bg"
+            className="book-details__left-bg"
             style={{
               backgroundImage: `url(${imgURL})`,
               backgroundPosition: "center",
@@ -48,7 +48,7 @@ const Bookdetails = ({ details }) => {
           <span>Categories:</span> {categories ? categories : <NoInfo />}
         </p>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <div className="book-details__right-section">
               <Typography variant="h4" component="h2">
                 Authors:
@@ -64,7 +64,7 @@ const Bookdetails = ({ details }) => {
               )}
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <div className="book-details__right-section">
               <Typography variant="h4" component="h2">
                 Publisher:
@@ -73,10 +73,10 @@ const Bookdetails = ({ details }) => {
             </div>
           </Grid>
         </Grid>
-        <Typography variant="h4" component="h2">
-          Description:
-        </Typography>
         <div className="book-details__description">
+          <Typography variant="h4" component="h2">
+            Description:
+          </Typography>
           {description ? parse(description) : <NoInfo />}
         </div>
         <div>
