@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import BooksListContextProvider from "./context/BooksListContext";
@@ -15,7 +15,7 @@ const Home = React.lazy(() => import("./pages/Home/Home.component"));
 const Details = React.lazy(() => import("./pages/Details/Details.component"));
 
 function App() {
-  const theme = createMuiTheme({
+  const theme = createTheme ({
     palette: {
       primary: {
         main: "#9b6549",

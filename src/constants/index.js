@@ -1,4 +1,4 @@
-import { api_key } from "./API_KEY";
+
 //Base URL
 const base_url = "https://www.googleapis.com/books/v1/volumes/";
 
@@ -37,5 +37,5 @@ export const booksSearch = (
   order = orders.relevance,
   term
 ) =>
-  `${base_url}${query}${parameter}${term}${filter}${order}&maxResults=36&key=${api_key}`;
-export const bookDetails = (book_id) => `${base_url}${book_id}?key=${api_key}`;
+  `${base_url}${query}${parameter}${term}${filter}${order}&maxResults=36&key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`;
+export const bookDetails = (book_id) => `${base_url}${book_id}?key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`;
