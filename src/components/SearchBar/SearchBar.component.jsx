@@ -8,7 +8,6 @@ const SearchBar = ({
   parameter,
   filter,
   order,
-  errorQuery,
   history,
   home,
   search,
@@ -70,8 +69,8 @@ const SearchBar = ({
         variant="contained"
         color="primary"
         onClick={(e) => {
-          validateSearch(e, parameter, filter, order);
-          if (!errorQuery) {
+          const isValid = validateSearch(e, parameter, filter, order);
+          if (isValid) {
             history.push("/search");
           }
         }}

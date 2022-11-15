@@ -14,8 +14,6 @@ const Image = React.lazy(() =>
 
 const Home = () => {
   const {
-    errorQuery,
-    setErrorQuery,
     message,
     validateSearch,
     setBooks,
@@ -25,8 +23,7 @@ const Home = () => {
   useEffect(() => {
     setBooks([]);
     setMessage("");
-    setErrorQuery(true)
-  }, [setBooks, setMessage, setErrorQuery]);
+  }, [setBooks, setMessage]);
 
   return (
     <Container className="container-home">
@@ -36,7 +33,6 @@ const Home = () => {
           <SearchBar
             home
             validateSearch={validateSearch}
-            errorQuery={errorQuery}
           />
           <Message text={message} />
         </Grid>

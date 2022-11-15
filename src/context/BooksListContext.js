@@ -8,7 +8,6 @@ const BooksListContextProvider = ({ children }) => {
   const [doneFetchBooks, setdoneFetchBooks] = useState(false);
   const [books, setBooks] = useState([]);
   const [message, setMessage] = useState("");
-  const [errorQuery, setErrorQuery] = useState(true);
 
   //Fetchs
   //Fetch books based on parameters passed
@@ -46,18 +45,18 @@ const BooksListContextProvider = ({ children }) => {
     if (q_book === "") {
       setdoneFetchBooks(false);
       setBooks([]);
-      setErrorQuery(true);
       setMessage("Try searching for something first :)");
+      return false
     } else {
-      setErrorQuery(false);
       getBooks(parameter, filter, order, q_book);
       setdoneFetchBooks(false);
+      return true
     }
   };
 
   return (
     <BooksListContext.Provider
-      value={{ doneFetchBooks, books, errorQuery, message, validateSearch, setBooks, setdoneFetchBooks, setErrorQuery, setMessage }}
+      value={{ doneFetchBooks, books, message, validateSearch, setBooks, setdoneFetchBooks, setMessage }}
     >
       {children}
     </BooksListContext.Provider>
