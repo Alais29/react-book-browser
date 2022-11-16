@@ -17,7 +17,9 @@ const BooksListContextProvider = ({ children }) => {
       .then((data) => {
         setdoneFetchBooks(true);
         if (data.error) {
-          setMessage(data.error);
+          if (data.error.status === "PERMISSION_DENIED")
+            setMessage("Looks like you don't have permission to use this API");
+          else setMessage(data.error.message);
         } else if (data.totalItems === 0) {
           setMessage(
             "Sorry! There are no results, try searching with a different term and/or parameter"
@@ -31,7 +33,7 @@ const BooksListContextProvider = ({ children }) => {
           setBooks(data.items);
           setMessage("");
         }
-      });
+      })
   };
 
   const validateSearch = (
